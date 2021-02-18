@@ -1,0 +1,34 @@
+{% extends 'main_app/base.html'%}
+{% load static %}
+
+
+{% block content %}
+<div class="mainprofile">
+    <table border="1px" width="100%" height="100%" border-collapse="collapse">
+   {% for item in profile %}
+
+        <tr><td width="250px"><img src="{% if item.avatar %}{{item.avatar.url}}{% else %}{{'media/2011/no_image.jpg'}}{% endif %}" alt="место под картинку" width="250px"></td>
+            <td>
+                <table width="100%" height="100%" cellpadding="5px">
+                <tr class="table-row"><td>Имя: {% if item.user_name %}{{item.user_name}}{% else %} нажмите редактировать данные{% endif %}</td></tr>
+                <tr class="table-row"><td>Фамилия: {% if item.user_lastname %}{{item.user_lastname}}{% else %} нажмите редактировать данные{% endif %}</td></tr>
+                <tr class="table-row"><td>Адрес почты: {% if item.email %}{{item.email}}{% else %} нажмите редактировать данные{% endif %}</td></tr>
+                <tr class="table-row"><td>Пол: {% if item.gender %}{{item.gender}}{% else %} нажмите редактировать данные{% endif %}</td></tr>
+                <tr class="table-row"><td>Телефон: {% if item.phone %}{{item.phone}}{% else %} нажмите редактировать данные{% endif %}</td></tr>
+                <tr class="table-row"><td>День рождения: {% if item.birthday%}{{item.birthday}}{% else %} нажмите редактировать данные{% endif %}</td></tr>
+                <tr class="table-row"><td><a href="{% url 'accounts:editprofile' %}">редактировать данные</a></td></tr>
+                <tr class="table-row"><td></td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    {% endfor %}
+
+
+</div>
+{% endblock %}
+
+
+
+
+

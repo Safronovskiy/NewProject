@@ -1,0 +1,44 @@
+{% extends 'main_app/base.html'%}
+{% load static %}
+{% load account socialaccount %}
+
+
+{% block content %}
+{% get_providers as socialaccount_providers %}
+    <div class="div_register">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                {% for item in form %}
+                <tr> <td>{{item.label}}:</td> <td>{{item}}</td> </tr>
+                {% endfor %}
+                <tr><td></td><td><input type="submit" value="Log in!"></td></tr>
+                <tr><td><a href="{% url 'social:begin' 'auth_backend' %"><img src="/media/VK_Logo.png" width="40px" class="avatar-3" data-toggle="tooltip" ></a></td></tr>
+            </table>
+
+        </form>
+
+    </div>
+<div class="row">
+    <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+        <button class="btn btn-danger  mb-2">
+            <a href="{% url 'social:begin' 'auth_backend' %}">Login with VK</a>
+        </button>
+        <button class="btn btn-primary mb-2">
+            <a href="">Login with Facebook
+            </a>
+        </button>
+        <button class="btn btn-info mb-2">
+            <a href="#">Login with LinkedIn</a>
+        </button>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+

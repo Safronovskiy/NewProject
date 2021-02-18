@@ -1,0 +1,84 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{% static 'shopstyles.css' %}">
+
+    <title></title>
+
+
+</head>
+<body >
+
+
+{% block nav %}
+<div class="shopmaindiv">
+<table class="table_cats" width="100%"  cellpadding="10px">
+    <tr> <td><a href="/">На главную</a></td><td><a href="{% url 'shop_app:shopstartpage' %}"><img style="height:20px" src="/media/Savage2.png" alt=""></a></td>
+        <td>Поиск:
+            <form action="" method="GET">
+                <input type="text">
+                <input type="submit" value="search!">
+            </form></td>
+        <td align="right">Личный кабинет</td>
+        <td align="right"><a href=""><img src="/media/shopping-cart4.jpg" width="70px" alt="корзина"></a></td>
+    </tr>
+</table>
+<table width="100%"  cellpadding="10px">
+    <tr>{% for cat in cats %}
+        <td align="center" class="td_cats"><a style="text-decoration:none;" href="{% url 'shop_app:catsort' cat.id%}">{{cat}}</a></td>
+        {% endfor %}
+    </tr>
+</table>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="main_div">
+
+
+{% for item in clothes %}
+        <div class="main" style="background-image: url('{{item.image.url}}');">
+
+                <ul class="main_li">
+                    <li>{{item.brand}}</li>
+                    <li>{{item.description}}</li>
+                    <li>{{item.price}} BYN</li>
+                    <li><button style="margin-left:45px;">Buy!</button>
+                        <form action="{% url 'shop_app:details' item.pk %}" method="get">
+                            <button style="margin-left:40px;">details</button>
+                        </form>
+
+                    </li>
+                </ul>
+
+        </div>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+{% block pagination %}
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">prev</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+  {% endblock %}
+
+

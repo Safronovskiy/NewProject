@@ -1,0 +1,24 @@
+{% extends 'main_app/startpage.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+<a href="{% url 'main_app:addpost' %}">Добавить пост</a>
+
+{% for post in posts %}
+
+    <table border="1" cellpadding="7" cellspacing="10" width="100%" bgcolor="BlanchedAlmond	">
+        <tr>    <th> {{ post.title}}</th>    </tr>
+        <tr>    <th>{{post.content}}</th>    </tr>
+         <tr>
+             <th><a href="{% url 'main_app:editpost' post.pk %}">{% trans "edit post" %}</a>
+             <a href="{% url 'main_app:delpost' post.pk %}">удалить пост</a>
+             </th>
+         </tr>
+    </table>
+
+{% endfor %}
+
+
+{% endblock %}

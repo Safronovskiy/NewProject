@@ -1,0 +1,34 @@
+{% extends 'shop_app/shop_startpage.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+<div class="main_div">
+
+
+{% for item in clothes %}
+        <div class="main" style="background-image: url('{{item.image.url}}');">
+
+                <ul class="main_li">
+                    <li>{{item.brand}}</li>
+                    <li>{{item.description}}</li>
+                    <li>{{item.price}} BYN</li>
+                    <li><button style="margin-left:45px;">Buy!</button>{{cart_product_form}}
+                        <form action="{% url 'shop_app:details' item.pk %}" method="get">
+                            <button style="margin-left:40px;">details</button>
+                        </form></li>
+                </ul>
+
+        </div>
+{% endfor %}
+</div>
+
+
+
+
+{% endblock %}
+
+
+

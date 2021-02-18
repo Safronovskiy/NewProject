@@ -1,0 +1,45 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<table  border="1" cellpadding="7" cellspacing="10">
+    <tr>
+    <th>Название категории</th>
+    <th>  <a class="a_editcat" href="{% url 'main_app:addcat' %}">добавить</a></th>
+     <th> </th>
+    <th></th>
+    </tr>
+    {% for cat in cats %}
+    <tr>
+    <th>{{cat}}</th>
+    <th >  </th>
+    <th > <a class="a_editcat" href="{% url 'main_app:editcat' cat.id %}">редактировать</a> </th>
+    <th > <a class="a_editcat" href="{% url 'main_app:delcat' cat.id %}">удалить</a> </th>
+    </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

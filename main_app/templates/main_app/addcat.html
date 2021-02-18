@@ -1,0 +1,21 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <p>Создание новой категории:</p>
+    <p>Название:</p>{{form.name}}
+    <p>Описание:</p>{{form.description}}<br><br>
+    <input type="submit" value="создать!">
+</form>
+{% endblock%}
+
+
+
+
+
+
+

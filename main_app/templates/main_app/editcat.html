@@ -1,0 +1,26 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<table  cellpadding="7" cellspacing="10">
+    <tr>
+    <th>Название категории</th>
+    <th> </th>
+     <th> </th>
+    <th></th>
+    </tr>
+    <form action="" method="POST">
+        {% csrf_token %}
+
+    <tr>
+    <th>{{cat}}</th>
+    <th > Название:{{form.name}} </th>
+    <th > Описание:{{form.description}} </th>
+    <th ><input type="submit" value="сохранить!"> </th>
+    </tr>
+
+    </form>
+</table>
+{% endblock %}
+

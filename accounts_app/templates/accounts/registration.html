@@ -1,0 +1,20 @@
+{% extends 'main_app/base.html'%}
+{% load static %}
+
+
+
+{% block content %}
+    <div class="div_register">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table border="0px" cellpadding="10px" >
+                {% for item in form%}
+                <tr> <td> {{item.label}}:</td> <td> {{item}} </td></tr>
+                {% endfor %}
+                <tr><td></td><td><input type="submit" value="Send for registration!"></td></tr>
+            </table>
+
+
+        </form>
+    </div>
+{% endblock %}

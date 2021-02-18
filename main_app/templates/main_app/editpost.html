@@ -1,0 +1,40 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <table border="1" cellpadding="7" cellspacing="10" width="100%" bgcolor="BlanchedAlmond	">
+                <tr>    <th>Категория: {{form.category}} </th>  </tr>
+            <tr>    <th> Заголовок: {{form.title}}</th>   </tr>
+            <tr>    <th>Содержание: {{form.content}}</th>   </tr>
+            <tr>    <th><input type="submit" value="отправить!">
+                <a href="{% url 'main_app:allposts'%}">back</a></th>    </tr>
+    </table>
+
+</form>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

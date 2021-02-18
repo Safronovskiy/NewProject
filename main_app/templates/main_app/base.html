@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="http://userapi.com/js/api/openapi.js" type="text/javascript" charset="windows-1251"></script>
+
+</head>
+<body>
+
+    <nav>
+        <script type="text/javascript">
+        VK.init({
+        apiId: YOUR_API_ID
+        });
+        </script>
+        <div id="vk_auth"></div>
+        <script type="text/javascript">
+        VK.Widgets.Auth('vk_auth', {});
+        </script>
+
+        {% block nav %}
+
+        <ul class="topmenu">
+        <li><a href="/">Home</a></li>
+        <li><a href="">Blog</a>
+
+           <ul class="submenu">
+        <li><a href="{% url 'main_app:blogcats' %}">Category</a></li>
+         <li><a href="{% url 'main_app:allposts' %}">Posts</a></li>
+         <li><a href="">Search</a></li>
+         <li><a href="">Archive</a></li>
+         </ul>
+        </li>
+        <li><a href="{% url 'shop_app:shopstartpage' %}">Shop</a>
+          <ul class="submenu">
+        <li><a href="">GO to products</a></li>
+         <li><a href="">Go to basket</a></li>
+         <li><a href="">Archive</a></li>
+         <li><a href="">e-mail</a></li>
+         </ul>
+        </li>
+        <li><a href="http://127.0.0.1:8000/admin/">Admin site</a></li>
+          {% if request.user.is_authenticated %}
+             <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
+             <li> <p class="greetings">Добро пожаловать, <a href="{% url 'accounts:profile' %}">{{user.profile.user_name.capitalize}}!</a></p></li>
+          {% else %}
+            <li><a href="{% url 'accounts:register' %}">Registration</a></li>
+            <li><a href="{% url 'accounts:login' %}?next={{request.path}}">Log in</a></li>
+          {% endif %}
+      </ul>
+        {% endblock %}
+    </nav>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

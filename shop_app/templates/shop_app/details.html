@@ -1,0 +1,29 @@
+{% extends 'shop_app/shop_startpage.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="main_div">
+        <div class="main_inner">
+                <ul style="color:black; list-style-type:none;
+                           font-size: 30px;">
+                        <li><img style="width:300px;" src="{{info.image.url}}" alt=""></li>
+                        <li>{{info.brand}}</li>
+                        <li>{{info.description}}</li>
+                        <li>{{info.price}} BYN</li>
+                </ul>
+        </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
